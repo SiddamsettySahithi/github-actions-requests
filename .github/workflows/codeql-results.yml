@@ -29,7 +29,7 @@ jobs:
 
             // this private repo has 1 code scanning alerts
             owner="sahithi-org"
-            repo="login-action"
+            repo="setup-go"
 
             console.log(`::set-output name=action::${action}`)
             console.log(`::set-output name=owner::${actionOwner}`)
