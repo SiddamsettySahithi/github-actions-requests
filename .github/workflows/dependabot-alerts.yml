@@ -4,7 +4,7 @@ on:
 jobs:
   check:
     env:
-      issue_number: 1
+      issue_number: 6
       action: "actions/github-script"
     runs-on: ubuntu-latest
     #if: github.event.label.name == 'security-check'
