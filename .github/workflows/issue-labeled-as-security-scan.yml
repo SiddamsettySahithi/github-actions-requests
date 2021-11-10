@@ -261,5 +261,4 @@ jobs:
             // todo: handle the result of the workflow execution: what if all languages fail?
             // todo: read the results from the CodeQL workflow
             // todo: generate random cron schedule?
-    
   
