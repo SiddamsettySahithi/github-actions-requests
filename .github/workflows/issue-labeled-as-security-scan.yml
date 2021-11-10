@@ -182,7 +182,7 @@ jobs:
     steps:
     - uses: actions/checkout@v2
 
-    - name: Fork the action repository to rajbos-actions-test
+    - name: Fork the action repository to sahithi-org
       uses: rajbos-actions/forker@v0.0.1
       with:
         token: ${{ secrets.GH_TOKEN }}
