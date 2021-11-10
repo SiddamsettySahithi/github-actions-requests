@@ -73,27 +73,6 @@ jobs:
       run: |
         git clone https://github.com/${{ needs.find-action-name.outputs.action }} action
 
-    - name: Check Dependabot configuration
-      id: has-dependabot-configuration
-      run: |
-        echo "Looking for 'dependabot.yml' in '.github' folder of the action"
-        cd action
-        ls -la
-        cd .
-        if [ -d "action/.github" ] && [ -n (find .github -maxdepth 1 -name dependabot.yml) ] ; then
-          jq -nc '{"body": "✅ Dependabot configuration found"}' | \
-          curl -sL  -X POST -d @- \
-            -H "Content-Type: application/json" \
-            -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
-            "https://api.github.com/repos/${{ needs.find-action-name.outputs.request_owner }}/${{ needs.find-action-name.outputs.request_repo }}/issues/${{ needs.find-action-name.outputs.request_issue }}/comments"
-        else
-          jq -nc '{"body": "⛔️ No Dependabot configuration found"}' | \
-          curl -sL  -X POST -d @- \
-            -H "Content-Type: application/json" \
-            -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
-            "https://api.github.com/repos/${{ needs.find-action-name.outputs.request_owner }}/${{ needs.find-action-name.outputs.request_repo }}/issues/${{ needs.find-action-name.outputs.request_issue }}/comments"
-        fi
-
     - name: Check CodeQL step in Workflow
       id: has-codeql-in-workflow
       run: |
